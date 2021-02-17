@@ -47,10 +47,8 @@ html {
     margin: 40px;
   }
   
-
-
-
 /* BUTTONS */
+
   button {
     position: absolute;
     bottom: 20px;
@@ -62,19 +60,24 @@ html {
       float: right;
   }
 
+  .view-city-btn {
+    position: relative;
+    margin: 20px;
+  }
+
   /* LISTS */
 
  ul {
     display: inline-block;
-    margin-right: 20px;
+    margin: 10px;
     cursor: pointer;
     padding: 10px;
     background: white; 
   }
 
-  li{
+  li {
     display: inline;
-    margin-right: 20px;
+    margin: 10px;
   }
 
 
