@@ -6,10 +6,29 @@ Promise.all([
     .then(data => {
         console.log("Länder", data[0]);
         console.log("Städer", data[1]);
+
+        printCountries(data);
     })
 
+    // Funktion för att skriva ut länder i huvudmenyn
 
-    // ej klar än
-    function printCountries(data){
-       countries =  data[0];
+    function printCountries(list) {
+
+        let countries = list[0];
+        
+        for (let country in countries) {
+            if (countries.hasOwnProperty(country)) {
+                console.log(countries[country].countryname);
+
+                document.getElementById("list-countries").insertAdjacentHTML("beforeend", "<li>" + countries[country].countryname + "</li>");
+            }
+        }
     }
+
+    
+
+       
+
+    
+
+

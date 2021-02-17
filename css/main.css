@@ -61,3 +61,10 @@ html {
   .visited-city-btn {
       float: right;
   }
+
+  /* LISTS */
+
+  li {
+    display: inline;
+    margin-right: 20px;
+  }
