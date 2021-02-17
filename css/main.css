@@ -52,7 +52,6 @@ html {
 
 /* BUTTONS */
   button {
-    position: absolute;
     bottom: 20px;
     margin: 20px;
     border: none;
