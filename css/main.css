@@ -64,7 +64,17 @@ html {
 
   /* LISTS */
 
-  li {
+ ul {
+    display: inline-block;
+    margin-right: 20px;
+    cursor: pointer;
+    padding: 10px;
+    background: white; 
+  }
+
+  li{
     display: inline;
     margin-right: 20px;
   }
+
+
