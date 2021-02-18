@@ -17,13 +17,11 @@ Promise.all([
 // Funktion för att visa länderna i huvudmenyn
 
 function printCountries(list) {
-
     let countries = list[0];
     let cities = list[1];
 
     for (let country in countries) {
         if (countries.hasOwnProperty(country)) {
-            // console.log(countries[country].countryname);
             document.getElementById("listCountries").insertAdjacentHTML("beforeend", "<ul><li id='" + countries[country].id + "'>" + countries[country].countryname + "</li></ul>");
         }
     }
@@ -37,9 +35,8 @@ function printCountries(list) {
         for (let city in cities) {
 
             if (evt.target.id == cities[city].countryid) {
-                listCities.insertAdjacentHTML("beforeend", "<li id='" + cities[city].stadname.id + "'>" + cities[city].stadname  + "</li>");
+                listCities.insertAdjacentHTML("beforeend", "<li id='" + cities[city].id + "' value='" + cities[city].population + "'>" + cities[city].stadname + "</li>");
             }
-
         }
 
     });
@@ -49,30 +46,24 @@ function printCountries(list) {
 
 function printCityInformation(list) {
 
-    let cities = list[1];
-
-    listCities.addEventListener("click", function(evt) {
-
+    listCities.addEventListener("click", function (evt) {
         cityTitle = evt.target.innerHTML;
-        console.log(cityTitle);
-
-        for (let people in cities) {
-
-            if (cityTitle.hasOwnProperty(people)) {
-                cityPopulation = cities[people].population;
-            }
-        }
+        cityPopulation = evt.target.value;
 
         document.getElementById("cityName").innerHTML = ("<h1>" + cityTitle + "</h1>");
         document.getElementById("cityInfo").innerHTML = ("<p> Antal invånare: " + cityPopulation + "</p>");
-
+        saveLocalStorage(evt);
     });
+
 }
 
-
-
-
-
+// funktion som sparar stadens ID i local storage när man klickar på "besökt" knappen
+function saveLocalStorage(evt) {
+    visitedCity.addEventListener("click", function () {
+        cityId = evt.target.id;
+        localStorage.setItem('savedID:', JSON.stringify(cityId));
+    })
+}
 
 
 
