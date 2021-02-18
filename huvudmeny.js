@@ -11,12 +11,10 @@ Promise.all([
         console.log("Länder", data[0]);
         console.log("Städer", data[1]);
         printCountries(data);
-        printPopulation(data);
-        // printCities(data);
+        printCityInformation(data);
     })
 
-
-// Funktion för att skriva ut länder i huvudmenyn
+// Funktion för att visa länderna i huvudmenyn
 
 function printCountries(list) {
 
@@ -39,9 +37,7 @@ function printCountries(list) {
         for (let city in cities) {
 
             if (evt.target.id == cities[city].countryid) {
-                // console.log(cities[city].stadname);
-                listCities.insertAdjacentHTML("beforeend", "<li>" + cities[city].stadname + "</li>");
-                console.log(cities[city].population);
+                listCities.insertAdjacentHTML("beforeend", "<li id='" + cities[city].stadname.id + "'>" + cities[city].stadname  + "</li>");
             }
 
         }
@@ -49,23 +45,29 @@ function printCountries(list) {
     });
 }
 
-// Klickar på städerna så visas Stadvyn
-listCities.addEventListener("click", function (evt) {
-    console.log("click1");
-    cityTitle = evt.target.innerHTML;
-    console.log(cityTitle);
-    document.getElementById("cityName").innerHTML = ("<h1>" + cityTitle + "</h1>");
-        printPopulation();
-})
+// Funktion för att visa stadsvyn (namn, invånarantal) när man klickar på staden
 
-// Visar antal invånare
-function printPopulation(list) {
+function printCityInformation(list) {
+
     let cities = list[1];
-    for (let city in cities) {
-        document.getElementById("cityInfo").innerHTML = ("<p> Antal invånare: " + cities[city].population + "</p>");
-    }
-}
 
+    listCities.addEventListener("click", function(evt) {
+
+        cityTitle = evt.target.innerHTML;
+        console.log(cityTitle);
+
+        for (let people in cities) {
+
+            if (cityTitle.hasOwnProperty(people)) {
+                cityPopulation = cities[people].population;
+            }
+        }
+
+        document.getElementById("cityName").innerHTML = ("<h1>" + cityTitle + "</h1>");
+        document.getElementById("cityInfo").innerHTML = ("<p> Antal invånare: " + cityPopulation + "</p>");
+
+    });
+}
 
 
 
