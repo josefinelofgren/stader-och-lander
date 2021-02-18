@@ -44,7 +44,7 @@ function printCountries(list) {
 
 // Funktion för att visa stadsvyn (namn, invånarantal) när man klickar på staden
 
-function printCityInformation(list) {
+function printCityInformation() {
 
     listCities.addEventListener("click", function (evt) {
         cityTitle = evt.target.innerHTML;
@@ -57,13 +57,27 @@ function printCityInformation(list) {
 
 }
 
-// funktion som sparar stadens ID i local storage när man klickar på "besökt" knappen
+// Funktion som sparar stadens ID i local storage när man klickar på "besökt"-knappen
+
 function saveLocalStorage(evt) {
-    visitedCity.addEventListener("click", function () {
-        cityId = evt.target.id;
-        localStorage.setItem('savedID:', JSON.stringify(cityId));
-    })
+
+        visitedCity.addEventListener("click", function () {
+        let cityId = evt.target.id;
+
+        if (localStorage) {
+            let citiesArray;
+            if (!localStorage["savedID"]) citiesArray = [];
+            else citiesArray = JSON.parse(localStorage["savedID"]);            
+
+            citiesArray.push(cityId);
+
+            localStorage.setItem("savedID", JSON.stringify(citiesArray));
+
+        } 
+
+        });
 }
+
 
 
 
