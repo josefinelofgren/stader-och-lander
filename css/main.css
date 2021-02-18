@@ -51,13 +51,21 @@ html {
 
 
 /* BUTTONS */
-  button {
+ 
+
+  .visited-city-btn {
+    position: absolute;
+    bottom: 60px;
+    margin: 20px;
+    border: none;
+      float: right;
+  }
+  .deleted-city-btn{
     position: absolute;
     bottom: 20px;
     margin: 20px;
     border: none;
+    float:left;
   }
-
-  .visited-city-btn {
-      float: right;
-  }
+    
+  
