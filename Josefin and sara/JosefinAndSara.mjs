@@ -1,40 +1,68 @@
-export function visitedCity(){
-    let totalPopulation=0;
-    console.log("hello");
+let container = document.getElementById('container');
+let totalPopulation = 0;
+
+// Visited cities view 
+export function viewVisitedCities(){
+    visitedCities();
+
+    document.getElementById('city-name').innerHTML = "Besökta städer";
+    document.getElementById('city-info').innerHTML = "";
+
+    document.getElementById('visitedCity').style.display = "none";
+}
+
+
+// Fetch cities 
+function visitedCities(){
 fetch("json/stad.json")
 .then(response=>response.json())
-.then(stad=>{
-    console.log(stad);
-    let idNumber=[];
-    for(let i in stad ){
-        console.log(stad[i].id);
-       idNumber.push(stad[i].id) ;
-    console.log( idNumber);
+.then(city => {
+    console.log(city);
+    let idNumber = [];
+    
+    for(let i in city ){
+        console.log(city[i].id);
+        idNumber.push(city[i].id) ;
+        console.log( idNumber);
     }
+    
     localStorage.setItem("VisitedId",JSON.stringify(idNumber));
     console.log("localstorage:",localStorage);
-    let VisitedCityId=JSON.parse(localStorage.getItem('VisitedId'));
-    console.log("new Array:",VisitedCityId);
-    console.log("length:",VisitedCityId.length);
-// check Id of local storage with cities Id 
-     for (let i in VisitedCityId ){
-        console.log("VisitedCityId",VisitedCityId[i]);
-        for(let s in stad ){       
-        if(VisitedCityId[i]==stad[s].id){
-            console.log("stad",stad[s].id);
-            console.log("population",stad[s].population);
-            //console.log("vi added");
-// Add population of cities 
-           totalPopulation=totalPopulation+stad[s].population;
-  
-        }   
-    }
-}
-console.log("total population:",totalPopulation);
+    
+    let visitedCityId = JSON.parse(localStorage.getItem('VisitedId'));
+    console.log("new Array:",visitedCityId);
+    console.log("length:",visitedCityId.length);
+    
+    checkId(visitedCityId, city);
 }) 
 }
-// clearing local storage 
+
+
+// Check Id of local storage with cities Id 
+function checkId(visitedCityId, city){
+         for (let i in visitedCityId ){
+            console.log("VisitedCityId",visitedCityId[i]);
+            
+            for(let c in city ){       
+                if(visitedCityId[i]==city[c].id){
+                    console.log("Id",city[c].id);
+                    console.log("Population",city[c].population);
+                    console.log("City", city[c].stadname);
+                  
+    countTotalPopulation(city[c].population);
+    printCities(city[c].stadname);
+
+            }   
+        }
+    }
+
+    printTotalPopulation();
+}
+
+
+
+
+// Clearing local storage 
 document.getElementById("deleteVisitedCity").addEventListener("click", function deleteLocalStorage(){
-    console.log("hej från deletlocalstorage");
     localStorage.clear();
 });

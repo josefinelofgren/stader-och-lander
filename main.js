@@ -1,6 +1,8 @@
-import {visitedCity} from './Josefin and sara/JosefinAndSara.mjs'
+import {viewVisitedCities} from './Josefin and sara/JosefinAndSara.mjs'
 
+// View vistied cities onclick 
+document.getElementById("viewVisitedCities").addEventListener('click', function(){
+    viewVisitedCities();
+})
 
-console.log("hej from js");
-visitedCity();
 
