@@ -1,11 +1,10 @@
-// import {ctyInfo} from './modules/städer.mjs'
 
-// ctyInfo();
+import { printCityNames } from "./modules/städer.mjs"
+import {clickHandler} from "./modules/städer.mjs"
 
-let btns = document.querySelectorAll('.cities');
+printCityNames();
 
-for (let i of btns) {
-  i.addEventListener('click', function() {
-    console.log(this);
-  });
-}
+
+
+
+window.addEventListener("click", clickHandler); 
