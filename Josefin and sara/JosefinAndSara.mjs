@@ -59,7 +59,29 @@ function checkId(visitedCityId, city){
     printTotalPopulation();
 }
 
+// Print stored citites 
+function printCities(city){
+    let listCities = document.createElement("ul");
+    container.appendChild(listCities);
 
+    listCities.insertAdjacentHTML("beforeend", city);
+    listCities.style.display = "inline-block";
+}
+
+// Count total population of citites
+function countTotalPopulation(population){
+    totalPopulation = totalPopulation + population;
+    console.log("Total population:", totalPopulation);
+}
+
+
+// Print total population of citites
+function printTotalPopulation(){
+    let printTotalPopulation = document.createElement("p");
+    container.appendChild(printTotalPopulation);
+
+    printTotalPopulation.insertAdjacentHTML('beforeend', "Totalt antal invånare: " + totalPopulation);
+}
 
 
 // Clearing local storage 
