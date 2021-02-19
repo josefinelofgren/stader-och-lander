@@ -1,15 +1,16 @@
 let container = document.getElementById('container');
 let totalPopulation = 0;
+let savedId = localStorage.getItem("savedID");
 
 // Visited cities view 
 export function viewVisitedCities(){
+    console.log(localStorage);
     visitedCities();
 
     document.getElementById("cityName").innerHTML = "Besökta städer";
     document.getElementById("cityInfo").innerHTML = "";
+    document.getElementById("visitedCity").style.visibility = "hidden";
 
-    document.getElementById("visitedCity").style.display = "none";
-    document.getElementById("")
 }
 
 
@@ -19,33 +20,18 @@ fetch("json/stad.json")
 .then(response => response.json())
 .then(city => {
     console.log(city);
-    let idNumber = [];
-    
-    for(let i in city ){
-        console.log(city[i].id);
-        idNumber.push(city[i].id) ;
-        console.log( idNumber);
-    }
-    
-    localStorage.setItem("VisitedId",JSON.stringify(idNumber));
-    console.log("localstorage:",localStorage);
-    
-    let visitedCityId = JSON.parse(localStorage.getItem("VisitedId"));
-    console.log("new Array:",visitedCityId);
-    console.log("length:",visitedCityId.length);
-    
-    checkId(visitedCityId, city);
+    checkId(savedId, city);
 }) 
 }
 
 
 // Check Id of local storage with cities Id 
-function checkId(visitedCityId, city){
-         for (let i in visitedCityId ){
-            console.log("VisitedCityId",visitedCityId[i]);
+function checkId(savedId, city){
+         for (let i in savedId ){
+            console.log("VisitedCityId",savedId[i]);
             
             for(let c in city ){       
-                if(visitedCityId[i]==city[c].id){
+                if(savedId[i]==city[c].id){
                     console.log("Id",city[c].id);
                     console.log("Population",city[c].population);
                     console.log("City", city[c].stadname);
@@ -88,4 +74,6 @@ function printTotalPopulation(){
 // Clearing local storage 
 document.getElementById("deleteVisitedCity").addEventListener("click", function deleteLocalStorage(){
     localStorage.clear();
+
+    
 });
