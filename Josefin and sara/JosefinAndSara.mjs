@@ -5,17 +5,18 @@ let totalPopulation = 0;
 export function viewVisitedCities(){
     visitedCities();
 
-    document.getElementById('city-name').innerHTML = "Besökta städer";
-    document.getElementById('city-info').innerHTML = "";
+    document.getElementById("cityName").innerHTML = "Besökta städer";
+    document.getElementById("cityInfo").innerHTML = "";
 
-    document.getElementById('visitedCity').style.display = "none";
+    document.getElementById("visitedCity").style.display = "none";
+    document.getElementById("")
 }
 
 
 // Fetch cities 
 function visitedCities(){
 fetch("json/stad.json")
-.then(response=>response.json())
+.then(response => response.json())
 .then(city => {
     console.log(city);
     let idNumber = [];
@@ -29,7 +30,7 @@ fetch("json/stad.json")
     localStorage.setItem("VisitedId",JSON.stringify(idNumber));
     console.log("localstorage:",localStorage);
     
-    let visitedCityId = JSON.parse(localStorage.getItem('VisitedId'));
+    let visitedCityId = JSON.parse(localStorage.getItem("VisitedId"));
     console.log("new Array:",visitedCityId);
     console.log("length:",visitedCityId.length);
     
@@ -48,7 +49,7 @@ function checkId(visitedCityId, city){
                     console.log("Id",city[c].id);
                     console.log("Population",city[c].population);
                     console.log("City", city[c].stadname);
-                  
+                    
     countTotalPopulation(city[c].population);
     printCities(city[c].stadname);
 
@@ -80,7 +81,7 @@ function printTotalPopulation(){
     let printTotalPopulation = document.createElement("p");
     container.appendChild(printTotalPopulation);
 
-    printTotalPopulation.insertAdjacentHTML('beforeend', "Totalt antal invånare: " + totalPopulation);
+    printTotalPopulation.insertAdjacentHTML("beforeend", "Totalt antal invånare: " + totalPopulation);
 }
 
 
