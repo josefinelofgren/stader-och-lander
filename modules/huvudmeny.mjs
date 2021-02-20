@@ -48,6 +48,9 @@ export function printCountries(list) {
 export function printCityInformation() {
 
     listCities.addEventListener("click", function (evt) {
+        document.getElementById("visitedCity").style.display = "block";
+        document.getElementById("viewVisitedCities").style.display = "inline-block";
+
         let cityTitle = evt.target.innerHTML;
         let cityPopulation = evt.target.value;
 
