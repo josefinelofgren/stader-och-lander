@@ -21,39 +21,42 @@ export function viewVisitedCities(){
 
 }
 
-
 // Fetch cities 
 function visitedCities(){
 fetch("json/stad.json")
 .then(response => response.json())
 .then(city => {
     console.log(city);
-    checkId(savedId, city);
-}) 
-}
-
-
-// Check Id of local storage with cities Id 
-function checkId(savedId, city){
-         for (let i in savedId ){
-            console.log("VisitedCityId",savedId[i]);
-            
+    let  ArrayCity =JSON.parse(localStorage.getItem("savedID"));
+    let totalPopulation=0;
+    console.log(ArrayCity);  
+         for (let i in  ArrayCity ){
+            console.log("VisitedCityId",parseInt(ArrayCity[i]) );
+           // console.log("citiesArray",parsInt(citiesArray[i]));
             for(let c in city ){       
-                if(savedId[i]==city[c].id){
-
+                if(ArrayCity[i]==city[c].id){
+                   
                     console.log("Id", city[c].id);
                     console.log("Population",city[c].population);
                     console.log("City", city[c].stadname);
-                    
-    countTotalPopulation(city[c].population);
+                    totalPopulation =totalPopulation+ city[c].population;
+                    console.log(totalPopulation);
+    //countTotalPopulation(city[c].population);
     printCities(city[c].stadname);
 
             }   
         }
     }
+    totalPop.innerHTML = "Totalt antal invånare: " + totalPopulation;
 
-    printTotalPopulation();
+    if(localStorage.getItem("savedID") == null){
+        listCities.innerHTML = "Listan över besökta städer är tom."
+        totalPop.innerHTML = "";
+    }
+  
+}) 
 }
+
 
 // Print stored citites 
 function printCities(city){
@@ -63,24 +66,6 @@ function printCities(city){
     listCities.appendChild(li);
 }
     
-
-// Count total population of citites
-function countTotalPopulation(population){
-    totalPopulation =+ population;
-    console.log("Total population:", totalPopulation);
-}
-
-
-// Print total population of citites
-function printTotalPopulation(){
-    totalPop.innerHTML = "Totalt antal invånare: " + totalPopulation;
-
-    if(localStorage.getItem("savedID") == null){
-        listCities.innerHTML = "Listan över besökta städer är tom."
-        totalPop.innerHTML = "";
-    }
-}
-
 
 export function clearLS(){
     localStorage.clear();

@@ -77,7 +77,7 @@ export function saveLocalStorage(evt) {
 
             if (!localStorage["savedID"]) citiesArray = [];
             else citiesArray = JSON.parse(localStorage["savedID"]);
-
+            
             citiesArray.push(cityId);
             location.reload();
 
