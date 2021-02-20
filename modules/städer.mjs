@@ -42,6 +42,18 @@ export function displayCityInfo(id) {
           document.getElementById(
             id
           ).nextElementSibling.innerHTML += `<p> <h4>Väder:</h4> ${data.data[0].app_temp} C, ${data.data[0].weather.description} </p>`;
+
+          return fetch(
+            `https://en.wikipedia.org/api/rest_v1/page/summary/${selectedCity.stadname} `
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("wiki", data);
+
+              document.getElementById(
+                id
+              ).nextElementSibling.innerHTML += `<h4>Info:</h4>  <img src="${data.thumbnail.source}"></img> <p> ${data.extract} </p>`;
+            });
         });
     });
 }
