@@ -22,9 +22,11 @@ function printCountries(list) {
     let countries = list[0];
     let cities = list[1];
 
+
     for (let country in countries) {
         if (countries.hasOwnProperty(country)) {
-            document.getElementById("listCountries").insertAdjacentHTML("beforeend", "<ul><li id='" + countries[country].id + "'>" + countries[country].countryname + "</li></ul>");
+            document.getElementById("listCountries").insertAdjacentHTML("beforeend", "<ul><li id='" + countries[country].id + "'data-type='country'>" + countries[country].countryname + "</li></ul>");
+            listCountries.setAttribute("type", "country");
         }
     }
 
@@ -32,14 +34,17 @@ function printCountries(list) {
     listCountries.addEventListener("click", function (evt) {
         listCountries.appendChild(listCities);
         listCities.innerHTML = "";
+        var type = evt.target.getAttribute("data-type");
 
-        for (let city in cities) {
+        if (type == "country") {
 
-            if (evt.target.id == cities[city].countryid) {
-                listCities.insertAdjacentHTML("beforeend", "<li id='" + cities[city].id + "' value='" + cities[city].population + "'>" + cities[city].stadname + "</li>");
+            for (let city in cities) {
+                if (evt.target.id == cities[city].countryid) {
+                    listCities.insertAdjacentHTML("beforeend", "<li id='" + cities[city].id + "' value='" + cities[city].population + "'>" + cities[city].stadname + "</li>");
+                }
             }
-        }
 
+        }
     });
 }
 
@@ -63,7 +68,6 @@ function printCityInformation() {
 }
 
 // Funktion som sparar stadens ID i local storage när man klickar på "besökt"-knappen
-
 function saveLocalStorage(evt) {
 
     visitedCity.addEventListener("click", function () {
@@ -82,11 +86,3 @@ function saveLocalStorage(evt) {
         }
     });
 }
-
-
-
-
-
-
-
-
