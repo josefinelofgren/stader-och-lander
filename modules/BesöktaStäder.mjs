@@ -1,6 +1,5 @@
 let container = document.getElementById('container');
-let totalPopulation = 0;
-let savedId = localStorage.getItem("savedID");
+
 
 export let listCities = document.createElement("ul");
 container.appendChild(listCities);
@@ -35,7 +34,6 @@ fetch("json/stad.json")
            // console.log("citiesArray",parsInt(citiesArray[i]));
             for(let c in city ){       
                 if(ArrayCity[i]==city[c].id){
-                   
                     console.log("Id", city[c].id);
                     console.log("Population",city[c].population);
                     console.log("City", city[c].stadname);
