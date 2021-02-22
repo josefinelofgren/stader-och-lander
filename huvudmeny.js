@@ -30,7 +30,8 @@ function printCountries(list) {
         }
     }
 
-    // När man klickar på någon av länderna så skapas en <li> med dess städer    
+    // När man klickar på någon av länderna så skapas en <li> med dess städer   
+     
     listCountries.addEventListener("click", function (evt) {
         listCountries.appendChild(listCities);
         listCities.innerHTML = "";
@@ -53,6 +54,7 @@ function printCountries(list) {
 function printCityInformation() {
 
     listCities.addEventListener("click", function (evt) {
+        evt.stopPropagation();
         cityTitle = evt.target.innerHTML;
         cityPopulation = evt.target.value;
 
@@ -68,6 +70,7 @@ function printCityInformation() {
 }
 
 // Funktion som sparar stadens ID i local storage när man klickar på "besökt"-knappen
+
 function saveLocalStorage(evt) {
 
     visitedCity.addEventListener("click", function () {
