@@ -1,4 +1,4 @@
-import {viewVisitedCities, listCities, totalPop, clearLS} from './modules/JosefinAndSara.mjs'
+import {viewVisitedCities, listCities, clearLS} from './modules/besöktaStäder.mjs';
 import {fetchData, printCountries, printCityInformation, saveLocalStorage} from './modules/huvudmeny.mjs';
 
 
