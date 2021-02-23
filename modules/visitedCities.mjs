@@ -2,12 +2,13 @@ let savedCities = document.getElementById("savedCities");
 let container = document.getElementById('container');
 let savedId = localStorage.getItem("savedID");
 
-export let listCities = document.createElement("ul");
-savedCities.appendChild(listCities);
-
 export let totalPop = document.createElement("p");
-totalPop.id = "totalPopulation";
+totalPop.setAttribute ("class", "population");
 savedCities.appendChild(totalPop);
+
+export let listCities = document.createElement("ul");
+listCities.setAttribute("id", "listCities")
+savedCities.appendChild(listCities);
 
 
 

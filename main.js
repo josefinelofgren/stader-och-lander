@@ -1,7 +1,6 @@
 import {viewVisitedCities, listCities, clearLS} from './modules/visitedCities.mjs';
 import {fetchData, printCountries, printCityInformation, saveLocalStorage} from './modules/huvudmeny.mjs';
 
-
 if(localStorage.getItem("savedID") == null){
     listCities.innerHTML = "Listan över besökta städer är tom."
 }
@@ -22,4 +21,3 @@ document.getElementById("deleteVisitedCity").addEventListener("click", function 
 document.getElementById("viewVisitedCities").addEventListener('click', function(){
     viewVisitedCities();
 })
-
