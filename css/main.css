@@ -13,6 +13,7 @@ html {
 }
 
 
+
 /* HEADER */
 header {
   width: 100wv;
@@ -36,6 +37,8 @@ ul {
   display: inline-block;
   cursor: pointer;
   padding: 10px;
+ 
+  
 }
 
 li {
@@ -68,6 +71,7 @@ li {
 
 
 /* INFO CONTAINER */
+
 #container {
   width: 80%;
   height: 400px;
@@ -107,3 +111,4 @@ button {
 .saved-cities{
   margin: 30px;
 }
+
