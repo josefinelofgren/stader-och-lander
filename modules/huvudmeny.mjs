@@ -34,14 +34,17 @@ export function printCountries(list) {
     listCountries.addEventListener("click", function (evt) {
         listCountries.appendChild(listCities);
         listCities.innerHTML = "";
+        var type = evt.target.getAttribute("data-type");
 
-        for (let city in cities) {
+        if (type == "country") {
 
-            if (evt.target.id == cities[city].countryid) {
-                listCities.insertAdjacentHTML("beforeend", "<li class ='listCities' id='" + cities[city].id + "' value='" + cities[city].population + "'>" + cities[city].stadname + "</li>");
+            for (let city in cities) {
+                if (evt.target.id == cities[city].countryid) {
+                    listCities.insertAdjacentHTML("beforeend", "<li id='" + cities[city].id + "' value='" + cities[city].population + "'>" + cities[city].stadname + "</li>");
+                }
             }
-        }
 
+        }
     });
 }
 
