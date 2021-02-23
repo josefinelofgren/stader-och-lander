@@ -27,7 +27,7 @@ export function displayCityInfo(id) {
             .then((response) => response.json())
             .then((data) => {
               console.log("wiki", data);
-
+              document.getElementById("cities").innerHTML="";
               document.getElementById("cities").innerHTML += `<h4>Info:</h4>  <img src="${data.thumbnail.source}"></img> <p> ${data.extract} </p>`;
             });
         });
