@@ -1,5 +1,5 @@
-let savedCities = document.getElementById('savedCities');
-let totalPopulation = 0;
+let savedCities = document.getElementById("savedCities");
+let container = document.getElementById('container');
 let savedId = localStorage.getItem("savedID");
 
 export let listCities = document.createElement("ul");
@@ -8,6 +8,8 @@ savedCities.appendChild(listCities);
 export let totalPop = document.createElement("p");
 totalPop.id = "totalPopulation";
 savedCities.appendChild(totalPop);
+
+
 
 // Visited cities view 
 export function viewVisitedCities(){
@@ -19,39 +21,46 @@ export function viewVisitedCities(){
     savedCities.style.display = "block";
 }
 
+
+
 // Fetch cities 
 function visitedCities(){
 fetch("json/stad.json")
 .then(response => response.json())
 .then(city => {
     console.log(city);
-    let  ArrayCity =JSON.parse(localStorage.getItem("savedID"));
-    let totalPopulation=0;
-    console.log(ArrayCity);  
-         for (let i in  ArrayCity ){
-            console.log("VisitedCityId",parseInt(ArrayCity[i]) );
-           // console.log("citiesArray",parsInt(citiesArray[i]));
+
+    // LocalStorage to array 
+    let arrayCity = JSON.parse(localStorage.getItem("savedID"));
+    console.log(arrayCity); 
+
+    let totalPopulation = 0;
+
+    // For every item in array, log city id, name and population
+         for (let i in  arrayCity ){
+            console.log("VisitedCityId",parseInt(arrayCity[i]) );
+
             for(let c in city ){       
-                if(ArrayCity[i]==city[c].id){
-                   
+                if(arrayCity[i]==city[c].id){
                     console.log("Id", city[c].id);
                     console.log("Population",city[c].population);
                     console.log("City", city[c].stadname);
-                    totalPopulation =totalPopulation+ city[c].population;
+
+                    // Count total population of every city in array 
+                    totalPopulation = totalPopulation + city[c].population;
                     console.log(totalPopulation);
-    //countTotalPopulation(city[c].population);
-    printCities(city[c].stadname);
+                    
+                    // Print cities 
+                    printCities(city[c].stadname);
 
             }   
         }
     }
+
+    // Print total population 
     totalPop.innerHTML = "Totalt antal invånare: " + totalPopulation;
 
-    if(localStorage.getItem("savedID") == null){
-        listCities.innerHTML = "Listan över besökta städer är tom."
-        totalPop.innerHTML = "";
-    }
-  
+    ifEmptyLS();
 }) 
 }
 
@@ -64,13 +73,19 @@ function printCities(city){
     
     listCities.appendChild(savedCities);
 }
-    
 
-export function clearLS(){
-    localStorage.clear();
 
+// If localStorage is empty 
+function ifEmptyLS(){
     if(localStorage.getItem("savedID") == null){
         listCities.innerHTML = "Listan över besökta städer är tom."
         totalPop.innerHTML = "";
     }
+}
+
+
+// Clear localStorage
+export function clearLS(){
+    localStorage.clear();
+    ifEmptyLS();
 }
