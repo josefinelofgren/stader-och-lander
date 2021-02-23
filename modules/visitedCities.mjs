@@ -19,6 +19,8 @@ export function viewVisitedCities(){
 
     document.getElementById("cityName").innerHTML = "Besökta städer";
     document.getElementById("cityInfo").innerHTML = "";
+    document.getElementById("cities").style.display = "none";
+    document.getElementById("visitedCity").style.display = "none";
     savedCities.style.display = "block";
 }
 

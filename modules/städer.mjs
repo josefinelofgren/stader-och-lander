@@ -19,6 +19,7 @@ export function displayCityInfo(id) {
       )
         .then((response) => response.json())
         .then((data) => {
+            document.getElementById("cities").innerHTML = "";
             document.getElementById("cities").innerHTML += `<p> <h4>Väder:</h4> ${data.data[0].app_temp} C, ${data.data[0].weather.description} </p>`;
 
           return fetch(

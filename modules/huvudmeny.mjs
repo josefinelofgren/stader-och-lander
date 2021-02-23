@@ -56,9 +56,10 @@ export function printCountries(list) {
 
 export function printCityInformation() {
 
-
     listCities.addEventListener("click", function (evt) {
         document.getElementById("savedCities").style.display = "none";
+        document.getElementById("cities").style.display = "block";
+        document.getElementById("visitedCity").style.display = "inline-block";
         
         evt.stopPropagation();
         let cityTitle = evt.target.innerHTML;
