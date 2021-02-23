@@ -9,6 +9,7 @@
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
+  <script type="module" src="main.js"></script>
 
 </head>
 
@@ -22,17 +23,18 @@
   </header>
 
 
-<main id="main">
-  <div id="container">
-    <h1 id="cityName">Stadens namn</h1>
-    <p id="cityInfo">Info om staden</p>
-    <button id="visitedCity" class="visited-city-btn" type="button">Besökt</button>
-  
-  </div>
-</main>
-  
-<script src="main.js"></script>
-<script src="huvudmeny.js"></script>
+  <main id="main">
+    <div id="container">
+        <h1 id="cityName">Stadens namn</h1>
+        <p id="cityInfo">Info om staden</p>
+        <div id="savedCities"></div>
+      <button id="visitedCity" class="visited-city-btn" type="button">Besökt</button>
+      <button  id="deleteVisitedCity" class="deleted-city-btn" type="button" >Töm besökta städer</button>
+    </div>
+  </main>
+
+<script type="module" src="main.js"></script>
+
 </body>
 
 </html>
