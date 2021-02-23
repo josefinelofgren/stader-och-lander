@@ -22,24 +22,30 @@ function printCountries(list) {
     let countries = list[0];
     let cities = list[1];
 
+
     for (let country in countries) {
         if (countries.hasOwnProperty(country)) {
-            document.getElementById("listCountries").insertAdjacentHTML("beforeend", "<ul><li id='" + countries[country].id + "'>" + countries[country].countryname + "</li></ul>");
+            document.getElementById("listCountries").insertAdjacentHTML("beforeend", "<ul><li id='" + countries[country].id + "'data-type='country'>" + countries[country].countryname + "</li></ul>");
+            listCountries.setAttribute("type", "country");
         }
     }
 
-    // När man klickar på någon av länderna så skapas en <li> med dess städer    
+    // När man klickar på någon av länderna så skapas en <li> med dess städer   
+     
     listCountries.addEventListener("click", function (evt) {
         listCountries.appendChild(listCities);
         listCities.innerHTML = "";
+        var type = evt.target.getAttribute("data-type");
 
-        for (let city in cities) {
+        if (type == "country") {
 
-            if (evt.target.id == cities[city].countryid) {
-                listCities.insertAdjacentHTML("beforeend", "<li id='" + cities[city].id + "' value='" + cities[city].population + "'>" + cities[city].stadname + "</li>");
+            for (let city in cities) {
+                if (evt.target.id == cities[city].countryid) {
+                    listCities.insertAdjacentHTML("beforeend", "<li id='" + cities[city].id + "' value='" + cities[city].population + "'>" + cities[city].stadname + "</li>");
+                }
             }
-        }
 
+        }
     });
 }
 
@@ -48,6 +54,7 @@ function printCountries(list) {
 function printCityInformation() {
 
     listCities.addEventListener("click", function (evt) {
+        evt.stopPropagation();
         cityTitle = evt.target.innerHTML;
         cityPopulation = evt.target.value;
 
@@ -82,11 +89,3 @@ function saveLocalStorage(evt) {
         }
     });
 }
-
-
-
-
-
-
-
-
