@@ -1,13 +1,13 @@
-let container = document.getElementById('container');
+let savedCities = document.getElementById('savedCities');
 let totalPopulation = 0;
 let savedId = localStorage.getItem("savedID");
 
 export let listCities = document.createElement("ul");
-container.appendChild(listCities);
+savedCities.appendChild(listCities);
 
 export let totalPop = document.createElement("p");
 totalPop.id = "totalPopulation";
-container.appendChild(totalPop);
+savedCities.appendChild(totalPop);
 
 // Visited cities view 
 export function viewVisitedCities(){
@@ -16,9 +16,7 @@ export function viewVisitedCities(){
 
     document.getElementById("cityName").innerHTML = "Besökta städer";
     document.getElementById("cityInfo").innerHTML = "";
-    document.getElementById("visitedCity").style.visibility = "none";
-    document.getElementById("viewVisitedCities").style.visibility = "none";
-
+    savedCities.style.display = "block";
 }
 
 // Fetch cities 
@@ -60,10 +58,11 @@ fetch("json/stad.json")
 
 // Print stored citites 
 function printCities(city){
-    let li = document.createElement('li');
-    li.innerHTML = city; 
+    let savedCities = document.createElement('li');
+    savedCities.setAttribute('class', 'saved-cities')
+    savedCities.innerHTML = city; 
     
-    listCities.appendChild(li);
+    listCities.appendChild(savedCities);
 }
     
 

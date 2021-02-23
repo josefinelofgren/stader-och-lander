@@ -22,9 +22,11 @@ export function printCountries(list) {
     let countries = list[0];
     let cities = list[1];
 
+
     for (let country in countries) {
         if (countries.hasOwnProperty(country)) {
-            document.getElementById("listCountries").insertAdjacentHTML("beforeend", "<ul><li id='" + countries[country].id + "'>" + countries[country].countryname + "</li></ul>");
+            document.getElementById("listCountries").insertAdjacentHTML("beforeend", "<ul><li id='" + countries[country].id + "'data-type='country'>" + countries[country].countryname + "</li></ul>");
+            listCountries.setAttribute("type", "country");
         }
     }
 
@@ -36,7 +38,7 @@ export function printCountries(list) {
         for (let city in cities) {
 
             if (evt.target.id == cities[city].countryid) {
-                listCities.insertAdjacentHTML("beforeend", "<li id='" + cities[city].id + "' value='" + cities[city].population + "'>" + cities[city].stadname + "</li>");
+                listCities.insertAdjacentHTML("beforeend", "<li class ='listCities' id='" + cities[city].id + "' value='" + cities[city].population + "'>" + cities[city].stadname + "</li>");
             }
         }
 
@@ -48,9 +50,9 @@ export function printCountries(list) {
 export function printCityInformation() {
 
     listCities.addEventListener("click", function (evt) {
-        document.getElementById("visitedCity").style.display = "block";
-        document.getElementById("viewVisitedCities").style.display = "inline-block";
-
+        document.getElementById("savedCities").style.display = "none";
+        
+        evt.stopPropagation();
         let cityTitle = evt.target.innerHTML;
         let cityPopulation = evt.target.value;
 
@@ -61,6 +63,7 @@ export function printCityInformation() {
         document.getElementById("cityName").innerHTML = ("<h1>" + cityTitle + "</h1>");
         document.getElementById("cityInfo").innerHTML = ("<p> Antal invånare: " + cityPopulation + "</p>");
         saveLocalStorage(evt);
+
 
     });
 }

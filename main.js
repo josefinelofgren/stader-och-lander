@@ -9,8 +9,6 @@ if(localStorage.getItem("savedID") == null){
 function startPage(){
     document.getElementById("cityName").innerHTML = "Ingen stad vald";
     document.getElementById("cityInfo").innerHTML = "Välj en stad i menyn för att se information.";
-
-    document.getElementById("visitedCity").style.display = "none";
 }
 
 startPage();
