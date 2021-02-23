@@ -17,19 +17,19 @@
 
   <header id="header">
     <nav id="listCountries"> 
-
+      <button id="viewVisitedCities" type="button">Visa besökta städer</button>
     </nav>
-    <button id="viewVisitedCities" class="view-city-btn" type="button">Visa besökta städer</button>
   </header>
-
 
   <main id="main">
     <div id="container">
-        <h1 id="cityName">Stadens namn</h1>
-        <p id="cityInfo">Info om staden</p>
+        <h1 id="cityName"></h1>
+        <p id="cityInfo">
+          <div id="cities"></div>
+        </p>
         <div id="savedCities"></div>
-      <button id="visitedCity" class="visited-city-btn" type="button">Besökt</button>
-      <button  id="deleteVisitedCity" class="deleted-city-btn" type="button" >Töm besökta städer</button>
+      <button id="visitedCity" class="container-btn" type="button">Besökt</button>
+      <button  id="deleteVisitedCity" class="container-btn" type="button" >Töm besökta städer</button>
     </div>
   </main>
 

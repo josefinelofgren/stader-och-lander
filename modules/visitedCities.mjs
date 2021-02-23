@@ -2,12 +2,13 @@ let savedCities = document.getElementById("savedCities");
 let container = document.getElementById('container');
 let savedId = localStorage.getItem("savedID");
 
-export let listCities = document.createElement("ul");
-savedCities.appendChild(listCities);
-
 export let totalPop = document.createElement("p");
-totalPop.id = "totalPopulation";
+totalPop.setAttribute ("class", "population");
 savedCities.appendChild(totalPop);
+
+export let listCities = document.createElement("ul");
+listCities.setAttribute("id", "listCities")
+savedCities.appendChild(listCities);
 
 
 
@@ -18,6 +19,8 @@ export function viewVisitedCities(){
 
     document.getElementById("cityName").innerHTML = "Besökta städer";
     document.getElementById("cityInfo").innerHTML = "";
+    document.getElementById("cities").style.display = "none";
+    document.getElementById("visitedCity").style.display = "none";
     savedCities.style.display = "block";
 }
 

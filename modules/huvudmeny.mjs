@@ -1,8 +1,12 @@
+import {displayCityInfo} from "./städer.mjs"
+
 // variabler
 let listCountries = document.getElementById("listCountries");
-let listCities = document.createElement("listCities");
+let listCities = document.createElement("div");
+listCities.setAttribute("id", "listCities");
 let cityName = document.getElementById("CityName");
 let cityInfo = document.getElementById("CityInfo");
+let cities = document.getElementById("cities");
 
 // fetch json-filer
 export let fetchData = Promise.all([
@@ -25,7 +29,7 @@ export function printCountries(list) {
 
     for (let country in countries) {
         if (countries.hasOwnProperty(country)) {
-            document.getElementById("listCountries").insertAdjacentHTML("beforeend", "<ul><li id='" + countries[country].id + "'data-type='country'>" + countries[country].countryname + "</li></ul>");
+            document.getElementById("listCountries").insertAdjacentHTML("beforeend", "<ul><li class='listCountries' id='" + countries[country].id + "'data-type='country'>" + countries[country].countryname + "</li></ul>");
             listCountries.setAttribute("type", "country");
         }
     }
@@ -40,7 +44,7 @@ export function printCountries(list) {
 
             for (let city in cities) {
                 if (evt.target.id == cities[city].countryid) {
-                    listCities.insertAdjacentHTML("beforeend", "<li id='" + cities[city].id + "' value='" + cities[city].population + "'>" + cities[city].stadname + "</li>");
+                    listCities.insertAdjacentHTML("beforeend", "<li class='listCities' id='" + cities[city].id + "' value='" + cities[city].population + "'>" + cities[city].stadname + "</li>");
                 }
             }
 
@@ -54,17 +58,22 @@ export function printCityInformation() {
 
     listCities.addEventListener("click", function (evt) {
         document.getElementById("savedCities").style.display = "none";
+        document.getElementById("cities").style.display = "block";
+        document.getElementById("visitedCity").style.display = "inline-block";
         
         evt.stopPropagation();
         let cityTitle = evt.target.innerHTML;
         let cityPopulation = evt.target.value;
+
+        displayCityInfo(evt.target.id);
 
         if (cityPopulation == 0) {
             cityPopulation = "Uppgift saknas!";
         }
 
         document.getElementById("cityName").innerHTML = ("<h1>" + cityTitle + "</h1>");
-        document.getElementById("cityInfo").innerHTML = ("<p> Antal invånare: " + cityPopulation + "</p>");
+        document.getElementById("cityInfo").innerHTML = ("<p class='population'> Antal invånare: " + cityPopulation + "</p>");
+        cities.insertAdjacentHTML("afterbegin", "<div class='cityInfo'></div>");
         saveLocalStorage(evt);
 
 
