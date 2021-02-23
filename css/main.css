@@ -19,6 +19,7 @@ body {
 }
 
 
+
 /* HEADER */
 header {
   width: 80vw;
@@ -42,6 +43,8 @@ ul {
   display: inline-block;
   cursor: pointer;
   padding: 10px;
+ 
+  
 }
 
 li {
@@ -74,6 +77,7 @@ li {
 
 
 /* INFO CONTAINER */
+
 #container {
   width: 80%;
   height: auto;
@@ -130,3 +134,4 @@ button:hover {
 .saved-cities{
   margin: 30px;
 }
+
