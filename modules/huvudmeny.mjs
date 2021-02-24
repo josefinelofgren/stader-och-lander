@@ -82,6 +82,7 @@ export function printCityInformation() {
 
 // Funktion som sparar stadens ID i local storage när man klickar på "besökt"-knappen
 
+
 export function saveLocalStorage(evt) {
 
     visitedCity.addEventListener("click", function () {
@@ -90,15 +91,13 @@ export function saveLocalStorage(evt) {
         if (localStorage) {
             let citiesArray;
 
-            // if (!localStorage["savedID"]) citiesArray = [];
-            // else citiesArray = JSON.parse(localStorage["savedID"]);
-            // localStorage.clear();
-            // citiesArray.push(cityId);
-            // location.reload();
-
-            localStorage.clear();
-            localStorage.setItem("savedID", JSON.stringify(cityId));
+            if (!localStorage["savedID"]) citiesArray = [];
+            else citiesArray = JSON.parse(localStorage["savedID"]);
             
+            citiesArray.push(cityId);
+            location.reload();
+
+            localStorage.setItem("savedID", JSON.stringify(citiesArray));
         }
     });
 }
