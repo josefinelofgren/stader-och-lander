@@ -50,10 +50,11 @@ ul {
 li {
   display: inline;
   cursor: pointer;
+  background-color: #718557;
 }
 
 #listCities {
-  width 20px;
+  width: 20px;
 }
 
 .listCountries {
@@ -88,7 +89,6 @@ li {
   margin-top: 50px;
   padding: 40px;
   position: relative;
-  background-color: 
 }
 
 
