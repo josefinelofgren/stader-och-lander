@@ -90,13 +90,15 @@ export function saveLocalStorage(evt) {
         if (localStorage) {
             let citiesArray;
 
-            if (!localStorage["savedID"]) citiesArray = [];
-            else citiesArray = JSON.parse(localStorage["savedID"]);
-            
-            citiesArray.push(cityId);
-            location.reload();
+            // if (!localStorage["savedID"]) citiesArray = [];
+            // else citiesArray = JSON.parse(localStorage["savedID"]);
+            // localStorage.clear();
+            // citiesArray.push(cityId);
+            // location.reload();
 
-            localStorage.setItem("savedID", JSON.stringify(citiesArray));
+            localStorage.clear();
+            localStorage.setItem("savedID", JSON.stringify(cityId));
+            
         }
     });
 }
