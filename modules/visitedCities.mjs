@@ -35,7 +35,7 @@ fetch("json/stad.json")
     console.log(arrayCity); 
 
     let totalPopulation = 0;
-
+     listCities.innerHTML="";
     // For every item in array, log city id, name and population
          for (let i in  arrayCity ){
             console.log("VisitedCityId",parseInt(arrayCity[i]) );
