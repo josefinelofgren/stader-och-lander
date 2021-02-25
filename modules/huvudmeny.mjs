@@ -56,6 +56,7 @@ export function printCityInformation() {
     listCities.addEventListener("click", function (evt) {
         document.getElementById("savedCities").style.display = "none";
         document.getElementById("visitedCity").style.display = "inline-block";
+        document.getElementById("viewVisitedCities").style.display ="block";
         
         evt.stopPropagation();
         let cityTitle = evt.target.innerHTML;

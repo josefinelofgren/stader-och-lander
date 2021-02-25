@@ -19,6 +19,7 @@ export function viewVisitedCities(){
     document.getElementById("cityName").innerHTML = "Besökta städer";
     document.getElementById("cityInfo").innerHTML = "";
     document.getElementById("visitedCity").style.display = "none";
+    document.getElementById("viewVisitedCities").style.display ="none";
     savedCities.style.display = "block";
 }
 
@@ -66,6 +67,8 @@ fetch("json/stad.json")
 
 // Print stored citites 
 function printCities(city){
+    listCities.innerHTML = "";
+    
     let savedCities = document.createElement('li');
     savedCities.setAttribute('class', 'saved-cities')
     savedCities.innerHTML = city; 
@@ -77,8 +80,9 @@ function printCities(city){
 // If localStorage is empty 
 function ifEmptyLS(){
     if(localStorage.getItem("savedID") == null){
+
         listCities.innerHTML = "Listan över besökta städer är tom."
-        totalPop.innerHTML = "";
+        totalPop.innerHTML = "Totalt antal invånare: 0";
     }
 }
 
