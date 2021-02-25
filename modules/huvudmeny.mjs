@@ -6,7 +6,6 @@ let listCities = document.createElement("div");
 listCities.setAttribute("id", "listCities");
 let cityName = document.getElementById("CityName");
 let cityInfo = document.getElementById("CityInfo");
-let cities = document.getElementById("cities");
 
 // fetch json-filer
 export let fetchData = Promise.all([
@@ -58,7 +57,6 @@ export function printCityInformation() {
 
     listCities.addEventListener("click", function (evt) {
         document.getElementById("savedCities").style.display = "none";
-        document.getElementById("cities").style.display = "block";
         document.getElementById("visitedCity").style.display = "inline-block";
         
         evt.stopPropagation();
@@ -73,7 +71,6 @@ export function printCityInformation() {
 
         document.getElementById("cityName").innerHTML = ("<h1>" + cityTitle + "</h1>");
         document.getElementById("cityInfo").innerHTML = ("<p class='population'> Antal invånare: " + cityPopulation + "</p>");
-        cities.insertAdjacentHTML("afterbegin", "<div class='cityInfo'></div>");
         saveLocalStorage(evt);
 
 

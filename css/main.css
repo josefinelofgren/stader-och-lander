@@ -43,14 +43,11 @@ ul {
   display: inline-block;
   cursor: pointer;
   padding: 10px;
- 
-  
 }
 
 li {
   display: inline;
   cursor: pointer;
-  background-color: #718557;
 }
 
 #listCities {

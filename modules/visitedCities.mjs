@@ -7,7 +7,7 @@ totalPop.setAttribute ("class", "population");
 savedCities.appendChild(totalPop);
 
 export let listCities = document.createElement("ul");
-listCities.setAttribute("id", "listCities")
+listCities.setAttribute("id", "SavedCitiesContainer")
 savedCities.appendChild(listCities);
 
 
@@ -19,7 +19,6 @@ export function viewVisitedCities(){
 
     document.getElementById("cityName").innerHTML = "Besökta städer";
     document.getElementById("cityInfo").innerHTML = "";
-    document.getElementById("cities").style.display = "none";
     document.getElementById("visitedCity").style.display = "none";
     savedCities.style.display = "block";
 }
