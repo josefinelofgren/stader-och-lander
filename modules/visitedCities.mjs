@@ -1,58 +1,66 @@
-let savedCities = document.getElementById("savedCities");
+import {saveLocalStorage} from "./huvudmeny.mjs";
+
+
+// VARIABLES 
 let container = document.getElementById('container');
 let savedId = localStorage.getItem("savedID");
 
-export let totalPop = document.createElement("p");
+// Visited cities 
+let savedCities = document.getElementById("savedCities");
+let totalPop = document.createElement("p");
 totalPop.setAttribute ("class", "population");
 savedCities.appendChild(totalPop);
 
 export let listCities = document.createElement("ul");
-listCities.setAttribute("id", "SavedCitiesContainer")
+listCities.setAttribute("id", "savedCitiesContainer")
 savedCities.appendChild(listCities);
 
 
-// Visited cities view 
-export function viewVisitedCities(){
-    console.log(localStorage);
-    visitedCities();
 
+
+
+// PRINT VIEW FOR VISITED CITIES 
+export function viewVisitedCities(){
     document.getElementById("cityName").innerHTML = "Besökta städer";
     document.getElementById("cityInfo").innerHTML = "";
+    savedCities.style.display = "block";
+    visitedCities();
+
+    // Hide 
     document.getElementById("visitedCity").style.display = "none";
     document.getElementById("viewVisitedCities").style.display ="none";
-    savedCities.style.display = "block";
 }
 
-// Fetch cities 
+
+
+
+// FETCH CITIES 
 function visitedCities(){
 fetch("json/stad.json")
 .then(response => response.json())
 .then(city => {
-    console.log(city);
 
     // LocalStorage to array 
     let arrayCity = JSON.parse(localStorage.getItem("savedID"));
     console.log(arrayCity); 
 
     let totalPopulation = 0;
-     listCities.innerHTML="";
+    listCities.innerHTML = "";
+
     // For every item in array, log city id, name and population
          for (let i in  arrayCity ){
-            console.log("VisitedCityId",parseInt(arrayCity[i]) );
 
             for(let c in city ){       
                 if(arrayCity[i]==city[c].id){
-                    console.log("Id", city[c].id);
-                    console.log("Population",city[c].population);
                     console.log("City", city[c].stadname);
+                    console.log("Population",city[c].population);
 
                     // Count total population of every city in array 
                     totalPopulation = totalPopulation + city[c].population;
-                    console.log(totalPopulation);
+                    console.log("Total population",totalPopulation);
                     
                     // Print cities 
                     printCities(city[c].stadname);
-
             }   
         }
     }
@@ -60,34 +68,49 @@ fetch("json/stad.json")
     // Print total population 
     totalPop.innerHTML = "Totalt antal invånare: " + totalPopulation;
 
+    // If localStorage is empty
     ifEmptyLS();
 }) 
 }
 
 
-// Print stored citites 
+
+
+
+// PRINT STORED CITIES 
 function printCities(city){
-    let savedCities = document.createElement("li");
-    savedCities.setAttribute("class", "saved-cities")
-    savedCities.innerHTML = city; 
-    
-    listCities.appendChild(savedCities);
+
+    // Create li with city name
+    let visitedCity = document.createElement("li");
+    visitedCity.setAttribute("class", "visited-city")
+    visitedCity.innerHTML = city; 
+
+    listCities.appendChild(visitedCity);
 }
 
 
-// If localStorage is empty 
+
+
+
+
+// IF LOCAL STORAGE IS EMPTY 
 function ifEmptyLS(){
     if(localStorage.getItem("savedID") == null){
-
         document.getElementById("cityName").innerHTML = "Besökta städer";
-        listCities.innerHTML = "";
         document.getElementById("cityInfo").innerHTML = "Listan över besökta städer är tom.";
+
+        // Empty or hide 
+        listCities.innerHTML = "";
         totalPop.innerHTML = "";
+        document.getElementById("visitedCity").style.display = "none";
     }
 }
 
 
-// Clear localStorage
+
+
+
+// CLEAR LOCAL STORAGE
 export function clearLS(){
     localStorage.clear();
     ifEmptyLS();

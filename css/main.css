@@ -128,7 +128,7 @@ button:hover {
 #savedCities {
   display: none;
 }
-.saved-cities{
+.visited-city{
   margin: 20px;
   display: inline-block;
 }
