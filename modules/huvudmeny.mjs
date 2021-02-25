@@ -68,7 +68,7 @@ export function printCityInformation() {
         // Print weather, img and info 
         displayCityInfo(evt.target.id);
 
-        document.getElementById("cityName").innerHTML = ("<h1>" + cityTitle + "</h1>");
+        document.getElementById("cityName").innerHTML = ("<h1 class='city-name' id=" + evt.target.id + ">" + cityTitle + "</h1>");
         document.getElementById("cityInfo").innerHTML = ("<p class='population'> Antal invånare: " + cityPopulation + "</p>");
  });
 }
@@ -77,8 +77,8 @@ export function printCityInformation() {
  
 document.getElementById("visitedCity").addEventListener("click", saveLocalStorage);
 export function saveLocalStorage(evt) {
- 
-    let cityId = evt.target.id;
+
+    let cityId = document.getElementsByClassName("city-name")[0].id;
     console.log("Stadens id: " + cityId);
     
     if (localStorage) {
