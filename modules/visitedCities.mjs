@@ -67,10 +67,8 @@ fetch("json/stad.json")
 
 // Print stored citites 
 function printCities(city){
-    listCities.innerHTML = "";
-    
-    let savedCities = document.createElement('li');
-    savedCities.setAttribute('class', 'saved-cities')
+    let savedCities = document.createElement("li");
+    savedCities.setAttribute("class", "saved-cities")
     savedCities.innerHTML = city; 
     
     listCities.appendChild(savedCities);
@@ -81,8 +79,9 @@ function printCities(city){
 function ifEmptyLS(){
     if(localStorage.getItem("savedID") == null){
 
-        listCities.innerHTML = "Listan över besökta städer är tom."
-        totalPop.innerHTML = "Totalt antal invånare: 0";
+        listCities.innerHTML = "";
+        document.getElementById("cityInfo").innerHTML = "Listan över besökta städer är tom.";
+        totalPop.innerHTML = "";
     }
 }
 
