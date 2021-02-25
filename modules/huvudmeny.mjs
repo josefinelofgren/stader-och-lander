@@ -1,13 +1,13 @@
 import {displayCityInfo} from "./städer.mjs"
 
-// variabler
+// Variables
 let listCountries = document.getElementById("listCountries");
 let listCities = document.createElement("div");
 listCities.setAttribute("id", "listCities");
 let cityName = document.getElementById("CityName");
 let cityInfo = document.getElementById("CityInfo");
 
-// fetch json-filer
+// Fetch json-files
 export let fetchData = Promise.all([
     fetch("json/land.json").then(response => response.json()),
     fetch("json/stad.json").then(response => response.json())
@@ -19,8 +19,7 @@ export let fetchData = Promise.all([
         printCityInformation(data);
     })
 
-// Funktion för att visa länderna i huvudmenyn
-
+// Print countries in headmenu
 export function printCountries(list) {
     let countries = list[0];
     let cities = list[1];
@@ -33,7 +32,7 @@ export function printCountries(list) {
         }
     }
 
-    // När man klickar på någon av länderna så skapas en <li> med dess städer    
+    // Show cities while clicking a specific country
     listCountries.addEventListener("click", function (evt) {
         listCountries.appendChild(listCities);
         listCities.innerHTML = "";
@@ -51,8 +50,7 @@ export function printCountries(list) {
     });
 }
 
-// Funktion för att visa stadsvyn (namn, invånarantal) när man klickar på staden
-
+// Print city information (name, population and info)
 export function printCityInformation() {
 
     listCities.addEventListener("click", function (evt) {
@@ -63,38 +61,36 @@ export function printCityInformation() {
         let cityTitle = evt.target.innerHTML;
         let cityPopulation = evt.target.value;
 
-        displayCityInfo(evt.target.id);
-
         if (cityPopulation == 0) {
             cityPopulation = "Uppgift saknas!";
         }
 
+        // Print weather, img and info 
+        displayCityInfo(evt.target.id);
+
         document.getElementById("cityName").innerHTML = ("<h1>" + cityTitle + "</h1>");
         document.getElementById("cityInfo").innerHTML = ("<p class='population'> Antal invånare: " + cityPopulation + "</p>");
-        saveLocalStorage(evt);
-
-
-    });
+ });
 }
-
+ 
 // Funktion som sparar stadens ID i local storage när man klickar på "besökt"-knappen
-
-
+ 
+document.getElementById("visitedCity").addEventListener("click", saveLocalStorage);
 export function saveLocalStorage(evt) {
-
-    visitedCity.addEventListener("click", function () {
-        let cityId = evt.target.id;
-
-        if (localStorage) {
-            let citiesArray;
-
-            if (!localStorage["savedID"]) citiesArray = [];
-            else citiesArray = JSON.parse(localStorage["savedID"]);
-            
-            citiesArray.push(cityId);
-            location.reload();
-
-            localStorage.setItem("savedID", JSON.stringify(citiesArray));
-        }
-    });
-}
+ 
+    let cityId = evt.target.id;
+    console.log("Stadens id: " + cityId);
+    
+    if (localStorage) {
+    let citiesArray;
+    
+    if (!localStorage["savedID"]) citiesArray = [];
+    
+    else citiesArray = JSON.parse(localStorage["savedID"]);
+    localStorage.clear();
+    citiesArray.push(cityId);
+    
+    localStorage.setItem("savedID", JSON.stringify(citiesArray));
+    
+    }
+ };

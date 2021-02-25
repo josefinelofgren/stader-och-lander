@@ -11,7 +11,6 @@ listCities.setAttribute("id", "SavedCitiesContainer")
 savedCities.appendChild(listCities);
 
 
-
 // Visited cities view 
 export function viewVisitedCities(){
     console.log(localStorage);
@@ -22,8 +21,6 @@ export function viewVisitedCities(){
     document.getElementById("visitedCity").style.display = "none";
     savedCities.style.display = "block";
 }
-
-
 
 // Fetch cities 
 function visitedCities(){
