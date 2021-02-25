@@ -79,6 +79,7 @@ function printCities(city){
 function ifEmptyLS(){
     if(localStorage.getItem("savedID") == null){
 
+        document.getElementById("cityName").innerHTML = "Besökta städer";
         listCities.innerHTML = "";
         document.getElementById("cityInfo").innerHTML = "Listan över besökta städer är tom.";
         totalPop.innerHTML = "";
