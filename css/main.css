@@ -18,8 +18,6 @@ body {
   height: auto;
 }
 
-
-
 /* HEADER */
 header {
   width: 80vw;
@@ -34,7 +32,6 @@ header {
 nav {
   margin: 0 auto;
   height: auto;
-  
 }
 
 /* LISTS */
@@ -72,8 +69,6 @@ li {
   right: 0;
 }
 
-
-
 /* INFO CONTAINER */
 
 #container {
@@ -88,19 +83,16 @@ li {
   position: relative;
 }
 
-
 h1 {
   text-align: center;
   font-size: 50px;
 }
-
 
 .population {
   text-align: center;
   margin-top: -30px;
   font-weight: bold;
 }
-
 
 /* BUTTONS */
 button {
@@ -121,7 +113,6 @@ button:hover {
 .container-btn {
   position: relative;
 }
-
 
 /* SPARADE STÄDER */ 
 
