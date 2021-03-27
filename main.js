@@ -1,4 +1,4 @@
-import {viewVisitedCities, listCities, clearLS} from './modules/visitedCities.mjs';
+import {viewVisitedCities, listCities, clearLS} from './modules/besökta.mjs';
 import {fetchData, printCountries, printCityInformation, saveLocalStorage} from './modules/huvudmeny.mjs';
 
 // Print startpage 
